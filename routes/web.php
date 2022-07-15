@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::post('/upload', [ExpectancyController::class, 'uploadFile'])->name('upload');
+Route::get('/expectancy-data', [ExpectancyController::class, 'getExpectancyData'])->name('expectancy-data');
+Route::get('/column-names', [ExpectancyController::class, 'getYears'])->name('column-names');
+Route::get('/delete-all', [ExpectancyController::class, 'deleteAllData'])->name('delete-all');
